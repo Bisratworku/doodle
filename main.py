@@ -11,3 +11,7 @@ def data():
     with open('img.json', 'w') as f:
         json.dump(data, f, indent=4)
     return data
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

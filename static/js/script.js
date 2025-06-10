@@ -56,3 +56,4 @@ function save(event) {
         })
     })
 }
+console.log("Script loaded successfully");
