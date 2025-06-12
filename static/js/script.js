@@ -1,11 +1,13 @@
 //=nb
 const canvas = document.getElementById('canvas');
+canvas.width = 300;
+canvas.height = 300;
 const ctx = canvas.getContext("2d");
 const btn = document.getElementById("btn");
-ctx.fillStyle = 'white';
+ctx.fillStyle = 'black';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-let drawColor = 'black';
+let drawColor = 'white';
 let drawWidth = "5";
 let isDrawing = false;
 
@@ -56,4 +58,3 @@ function save(event) {
         })
     })
 }
-console.log("Script loaded successfully");
