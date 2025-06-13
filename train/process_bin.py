@@ -6,7 +6,7 @@ from struct import unpack
 import PIL
 from PIL import Image, ImageDraw
 #=nb
-path = 'C:\\Users\\pro\\Documents\\GitHub\\doodle\\train\\data\\full_binary_The Eiffel Tower.bin'
+path = 'C:\\Users\\pro\\Documents\\GitHub\\doodle\\train\\data\\full_binary_airplane.bin'
 
 class addData:
     def unpack_drawing(self,file_handle):
