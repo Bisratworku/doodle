@@ -194,3 +194,4 @@ train/data/
 .cursorignore
 .cursorindexingignore
 train/model.pth
+train/model2.pth
