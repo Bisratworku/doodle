@@ -44,7 +44,11 @@ function draw(event){
      }    
 }
 
+function process_response(data){
+    console.log(data, "hello world");
+}
 function save(event) {
+    let res = "";
     const data = ctx.getImageData(0,0,canvas.width, canvas.height);
     const send = fetch('/api/data', {
         method: 'POST',
@@ -56,5 +60,9 @@ function save(event) {
             height: canvas.height,
             data: Array.from(data.data)
         })
-    })
+    }).then(Response => Response.json())
+    .then(data => process_response(data))
+    .catch(error =>  console.error("Error", error)
+    )
+    console.log(res);
 }
