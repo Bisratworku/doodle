@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, json
+from model_interface import recognaize
 #=nb
 
 app = Flask(__name__)
@@ -10,8 +11,10 @@ def data():
     data = request.get_json()
     with open('img.json', 'w') as f:
         json.dump(data, f, indent=4)
-    return data
+    return {'say':"hello"}
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
