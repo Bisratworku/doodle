@@ -1,14 +1,14 @@
 //=nb
 const canvas = document.getElementById('canvas');
-canvas.width = 300;
-canvas.height = 300;
+canvas.width = 28;
+canvas.height = 28;
 const ctx = canvas.getContext("2d");
 const btn = document.getElementById("btn");
-ctx.fillStyle = 'black';
+ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-let drawColor = 'white';
-let drawWidth = "5";
+let drawColor = 'black';
+let drawWidth = "6";
 let isDrawing = false;
 
 canvas.addEventListener("touchstart", start, false);
@@ -44,9 +44,24 @@ function draw(event){
      }    
 }
 
-function process_response(data){
-    console.log(data, "hello world");
+function reshape_image(data){    
+   let row =  0;
+   let image = [];
+   for(let i = 0; i < 28; i++){
+        rowData = data.slice(row,  row+(28*4));
+        row += 28*4;
+        let col = 0;
+        let column = [];
+        for(let i = 0; i < 28; i++){
+            colData = rowData.slice(col, col + 4);
+            col += 4;
+            column.push(colData.reduce((acc, curr) => acc + curr, 0)/ 4);
+        }
+        image.push(column);
+    }
+    return image;
 }
+let g = document.getElementById("a");
 function save(event) {
     let res = "";
     const data = ctx.getImageData(0,0,canvas.width, canvas.height);
@@ -56,13 +71,10 @@ function save(event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            width: canvas.width,
-            height: canvas.height,
-            data: Array.from(data.data)
-        })
+            data: Array.from(reshape_image(data.data))
+        }),
     }).then(Response => Response.json())
-    .then(data => process_response(data))
+    .then(data => g.innerHTML = data.response)
     .catch(error =>  console.error("Error", error)
     )
-    console.log(res);
 }
