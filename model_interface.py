@@ -66,7 +66,7 @@ class model():
         data = json.load(f)
     img = np.array(data['data'], dtype = np.uint8)
     image = Image.fromarray(img)
+    image = image.resize((28,28))
     image = transform(image)
     image = image.reshape(1,1,28,28)
     return self.classes[self.model(image).argmax(1).item()]
-  

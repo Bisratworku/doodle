@@ -1,7 +1,7 @@
 //=nb
 const canvas = document.getElementById('canvas');
-canvas.width = 28;
-canvas.height = 28;
+canvas.width = 256;
+canvas.height = 256;
 const ctx = canvas.getContext("2d");
 const btn = document.getElementById("btn");
 ctx.fillStyle = 'white';
@@ -47,12 +47,12 @@ function draw(event){
 function reshape_image(data){    
    let row =  0;
    let image = [];
-   for(let i = 0; i < 28; i++){
-        rowData = data.slice(row,  row+(28*4));
-        row += 28*4;
+   for(let i = 0; i < canvas.height; i++){
+        rowData = data.slice(row,  row+(canvas.height*4));
+        row += canvas.height*4;
         let col = 0;
         let column = [];
-        for(let i = 0; i < 28; i++){
+        for(let i = 0; i < canvas.width; i++){
             colData = rowData.slice(col, col + 4);
             col += 4;
             column.push(colData.reduce((acc, curr) => acc + curr, 0)/ 4);
