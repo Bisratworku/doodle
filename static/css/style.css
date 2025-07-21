@@ -44,3 +44,7 @@ body{
     font-size: large  ;
     cursor: pointer;
 }
+p{
+    color: white;
+    text-align: center;
+}
