@@ -44,7 +44,7 @@ class ConvNet(nn.Module):
 class model():
   def __init__(self):      
     self.model = ConvNet().to(divice)
-    self.model.load_state_dict(torch.load("C:\\Users\\pro\\Documents\\GitHub\\doodle\\train\\model.pth"))
+    self.model.load_state_dict(torch.load("train//model.pth"))
     self.classes = {
         0: "airpalne",
         1 : "alarm",
@@ -58,7 +58,7 @@ class model():
         9 : "camera"
     }
   def predict(self):
-    self.path = "C:\\Users\\pro\\Documents\\GitHub\\doodle\\img.json"
+    self.path = "img.json"
     with open(self.path, 'r')as f:
         data = json.load(f)
     img = 1.0 - (np.array(data['data'], dtype = np.uint8) / 255)
