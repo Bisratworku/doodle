@@ -15,6 +15,6 @@ def data():
     return {'response' : m.predict()}
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 
