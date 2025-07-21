@@ -1,30 +1,46 @@
-*,::after, ::before{
+*, ::before, ::after{
     padding: 0;
-    margin: 0;
+    margin : 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 body{
-    width : 100%;
-    height : 100vh;
+    height: 100vh;
 }
 .contain{
+    background: url('pexels-niezam-16516.jpg') center fixed;
+    background-size: cover;
     height: 100%;
 }
-.the{
+
+.title{
+    
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+.draw{
     display: flex;
+    padding: 10px;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
-h1{
+.response{
+    color: white;
     text-align: center;
 }
-.center{
+.buttion{
+    padding: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
+    justify-content: center;
 }
-canvas{
-    border: 1px solid black;
-    
+.buttion input{
+    width: 150px;
+    padding: 15px;
+    background-color: rgba(0, 200, 0, 2);
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 900;
+    font-size: large  ;
+    cursor: pointer;
 }

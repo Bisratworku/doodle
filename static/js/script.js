@@ -8,7 +8,7 @@ ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 let drawColor = 'black';
-let drawWidth = "6";
+let drawWidth = "10";
 let isDrawing = false;
 
 canvas.addEventListener("touchstart", start, false);
@@ -37,7 +37,7 @@ function draw(event){
         
         ctx.lineTo(x, y);
         ctx.strokeStyle = drawColor;
-        ctx.linewidth = drawWidth;
+        ctx.lineWidth = drawWidth;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.stroke();
@@ -61,7 +61,7 @@ function reshape_image(data){
     }
     return image;
 }
-let g = document.getElementById("a");
+let answer = document.getElementById("a");
 function save(event) {
     let res = "";
     const data = ctx.getImageData(0,0,canvas.width, canvas.height);
@@ -74,7 +74,8 @@ function save(event) {
             data: Array.from(reshape_image(data.data))
         }),
     }).then(Response => Response.json())
-    .then(data => g.innerHTML = data.response)
+    .then(data => answer.innerHTML = data.response)
     .catch(error =>  console.error("Error", error)
     )
+    
 }

@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchvision.transforms import transforms
+from torchvision.transforms import ToTensor
 import json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,10 +12,7 @@ divice = ("cuda"
    else "mps"
    if torch.backends.mps.is_available()
    else "cpu")
-transform = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.5,), (0.5,))
-])
+
 class ConvNet(nn.Module):
   def __init__(self):
     super(ConvNet, self).__init__()
@@ -64,9 +61,9 @@ class model():
     self.path = "C:\\Users\\pro\\Documents\\GitHub\\doodle\\img.json"
     with open(self.path, 'r')as f:
         data = json.load(f)
-    img = np.array(data['data'], dtype = np.uint8)
+    img = 1.0 - (np.array(data['data'], dtype = np.uint8) / 255)
+    trans = ToTensor()
     image = Image.fromarray(img)
-    image = image.resize((28,28))
-    image = transform(image)
-    image = image.reshape(1,1,28,28)
-    return self.classes[self.model(image).argmax(1).item()]
+    image = trans(Image.fromarray(img).resize((28,28)))
+    pred = self.classes[self.model(image.reshape(1,1,28,28)).argmax(1).item()]
+    return pred
