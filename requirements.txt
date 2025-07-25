@@ -1,5 +1,5 @@
 flask
 gunicorn
 torch
-PIL
+Pillow
 numpy
